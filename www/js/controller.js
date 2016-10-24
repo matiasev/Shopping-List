@@ -1,5 +1,5 @@
-angular.module('meuApp', []);
-angular.module('meuApp').controller('meuController', function ($scope) {
+var app = angular.module('meuApp', []);
+app.controller('meuController', function ($scope) {
 
   var tasks = new getTasks();
   
