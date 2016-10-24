@@ -60,9 +60,6 @@ body{
   cursor: pointer;
   float: right;
 }
-.table{
-  height: 70px !important;
-}
 .container input{
   margin-top: 50px !important;
 }
