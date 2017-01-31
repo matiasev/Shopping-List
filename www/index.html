@@ -64,9 +64,8 @@
 
     <div class="container">
       
-      <input name="nome" type="text" placeholder="Item" ng-model="adicionarText.nome" ng-pattern="[A-Za-z\s]+$" maxlength="17" required>
-      <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-click="adicionarItem()">Add <i class="ion-plus"></i></a>
-      <p>{{errortext}}</p>
+      <input name="nome" type="text" placeholder="Item" ng-model="addItem.nome" ng-pattern="[A-Za-z\s]+$" maxlength="17" required>
+      <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-click="adicionarItem(addItem)">Add <i class="ion-plus"></i></a>
     </div>
     
   

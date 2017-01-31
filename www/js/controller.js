@@ -5,33 +5,18 @@ app.controller('meuController', function ($scope) {
   
   $scope.itens = tasks.produtos;
   tasks.save();  
-  
   $scope.numero = $scope.itens.length;
   
-  
-  $scope.adicionarItem = function () {
-    $scope.errortext = "";
-
-    if (!$scope.adicionarText.nome) {
-      return;
-    }
-    if ($scope.itens.indexOf($scope.adicionarText.nome) == -1) {
+  $scope.adicionarItem = function (addItem) {
       
-      $scope.itens.push({nome:$scope.adicionarText.nome, done:false});
-      
-      
+      $scope.itens.push(addItem);     
       $scope.numero = $scope.itens.length;
-      
       tasks.save();
-      
-    } else {
-      $scope.errortext = "Item já adicionado.";
-    }
-    delete $scope.adicionarText;
+      delete $scope.addItem;
   }
+
   
   $scope.removeItem = function (item) {
-    $scope.errortext = "";
     $scope.itens.splice(item, 1);
     $scope.numero = $scope.itens.length;
     tasks.save();
