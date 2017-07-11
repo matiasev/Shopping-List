@@ -1,29 +1,33 @@
-var app = angular.module('meuApp', []);
-app.controller('meuController', function ($scope) {
+(function(){
+  'use strict';
 
-  var tasks = new getTasks();
-  
-  $scope.itens = tasks.produtos;
-  tasks.save();  
-  $scope.numero = $scope.itens.length;
-  
-  $scope.adicionarItem = function (addItem) {
+  angular
+    .module('starter')
+    .controller('myController', ['$scope', myController]);
+
+    function myController($scope){
+      var vm = this;
+      var tasks = new getTasks();
       
-      $scope.itens.push(addItem);     
-      $scope.numero = $scope.itens.length;
+      vm.itens = tasks.produtos;
       tasks.save();
-      delete $scope.addItem;
-  }
+      vm.numero = vm.itens.length;
 
-  
-  $scope.removeItem = function (item) {
-    $scope.itens.splice(item, 1);
-    $scope.numero = $scope.itens.length;
-    tasks.save();
-  };
-  $scope.selecionado = function(item){
-    item.done = !item.done;
-    tasks.save();
-  };
-  
-});
+      vm.adicionarItem = function(addItem){
+        vm.itens.push(addItem);
+        vm.numero - vm.itens.length;
+        tasks.save();
+        delete vm.addItem;
+      }
+      vm.removeItem = function(item){
+        debugger;
+        vm.itens.splice(item, 1);
+        vm.numero - vm.itens.length;
+        tasks.save();
+      }
+      vm.selecionado = function(item){
+        item.done = !item.done;
+        tasks.save();
+      }
+    }
+}());

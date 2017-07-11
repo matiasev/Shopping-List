@@ -1,84 +1,43 @@
 <!DOCTYPE html>
-<html ng-app="meuApp">
+<html ng-app="starter">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>Shopping List</title>
-
-    <link rel="manifest" href="manifest.json">
-
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <link href="css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
-
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
-    <!-- your app's js -->
-    <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter" ng-controller="meuController">  
- 
-  <div>
+  <body>  
+  <div ng-controller="myController as vm">
     <nav>
       <div class="nav-wrapper blue-grey darken-3">
         <a href="" class="brand-logo white-text ">Shopping List</a>
         <a><i class="ion-ios-cart"></i></a>
-        <input value="{{numero}}" disabled>
+        <input value="{{vm.numero}}" disabled>
       </div>
     </nav>
-
-    
     <table class="striped">
       <tbody class="card-panel hoverable">
-        <tr class="done-{{item.done}}" ng-repeat="item in itens">
+        <tr class="done-{{item.done}}" ng-repeat="item in vm.itens">
           <td>{{ $index + 1 }}</td>
-          <td ng-click="selecionado(item)">{{item.nome | uppercase}}</td>
+          <td ng-click="vm.selecionado(item)">{{item.nome | uppercase}}</td>
           <!--<td><i class="material-icons" ng-show="item.done">done</i></td>-->
-          <td><i class="ion-android-done" ng-hide="item.done"></i><i class="ion-android-delete" ng-hide="!item.done" ng-click="removeItem($index)"></i></td>
+          <td><i class="ion-android-done" ng-hide="item.done"></i><i class="ion-android-delete" ng-hide="!item.done" ng-click="vm.removeItem($index)"></i></td>
         </tr>
-        
       </tbody>
-      
     </table>
-    
-
-
     <div class="container">
-      
-      <input name="nome" type="text" placeholder="Item" ng-model="addItem.nome" ng-pattern="[A-Za-z\s]+$" maxlength="17" required>
-      <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-click="adicionarItem(addItem)">Add <i class="ion-plus"></i></a>
+      <input name="nome" type="text" placeholder="Item" ng-model="vm.addItem.nome" ng-pattern="[A-Za-z\s]+$" maxlength="17" required>
+      <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-click="vm.adicionarItem(vm.addItem)">Add <i class="ion-plus"></i></a>
     </div>
-    
-  
-
     <div ng-include="'footer.html'"></div>
-    
-    
-    
   </div>
   <script src="js/angular.min.js"></script>
+  <script src="js/app.js"></script>
   <script src="js/controller.js"></script>
   <script src="js/model.js"></script>
-
-    
   </body>
 </html>

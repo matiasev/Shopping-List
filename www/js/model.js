@@ -1,4 +1,5 @@
 function getTasks() {
+  
   this.produtos = [];
 
  var lista = localStorage.getItem("Shopping list");
