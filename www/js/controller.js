@@ -14,10 +14,15 @@
       vm.numero = vm.itens.length;
 
       vm.adicionarItem = function(addItem){
-        vm.itens.push(addItem);
-        vm.numero - vm.itens.length;
-        tasks.save();
-        delete vm.addItem;
+        if(addItem != null){
+          vm.itens.push(addItem);
+          vm.numero - vm.itens.length;
+          tasks.save();
+          delete vm.addItem;
+        }else{
+          alert("Campo vazio!");
+        }
+        
       }
       vm.removeItem = function(item){
         debugger;
