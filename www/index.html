@@ -21,7 +21,7 @@
     </nav>
     <table class="striped">
       <tbody class="card-panel hoverable">
-        <tr class="done-{{item.done}}" ng-repeat="item in vm.itens track by $index">
+        <tr class="done-{{item.done}}" ng-repeat="item in vm.itens">
           <td>{{ $index + 1 }}</td>
           <td ng-click="vm.selecionado(item)">{{item.nome | uppercase}}</td>
           <!--<td><i class="material-icons" ng-show="item.done">done</i></td>-->
@@ -29,7 +29,7 @@
         </tr>
       </tbody>
     </table>
-    <p>{{vm.erro}}</p>
+    
     <div class="container">
       <input name="nome" type="text" placeholder="Item" ng-model="vm.addItem.nome" maxlength="17" required>
       <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-click="vm.adicionarItem(vm.addItem)">Add <i class="ion-plus"></i></a>
