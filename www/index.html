@@ -7,9 +7,7 @@
     
     <link href="css/main.css" rel="stylesheet">
     <link href="css/materialize.min.css" rel="stylesheet">
-    <!--<link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">-->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-    
   </head>
   <body>  
   <div ng-controller="myController as vm">
@@ -34,8 +32,6 @@
     <div class="container">
       <input name="nome" type="text" placeholder="Item" ng-model="vm.addItem.nome" maxlength="17" required>
       <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-hide="vm.mostra" ng-click="vm.adicionarItem(vm.addItem)">Add <i class="ion-plus"></i></a>
-
-      
       <a class="waves-effect waves-light btn-large blue-grey darken-4 " ng-hide="!vm.mostra" ng-click="vm.salvar(vm.addItem)" >Salvar</a>
     </div>
     <div ng-include="'footer.html'"></div>

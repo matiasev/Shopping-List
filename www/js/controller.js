@@ -13,9 +13,7 @@
       vm.numero = vm.itens.length;
 
       vm.adicionarItem = function(item){
-        
         if(item != null){
-
           for (var i = 0; i < vm.itens.length; i++) {
             var el = vm.itens[i];
             if(item.nome == el.nome){
@@ -24,12 +22,10 @@
               return;
             }
           }
-
           vm.itens.push(item);
           vm.numero - vm.itens.length;
           list.save();
           delete vm.addItem;
-          
         }else{
           alert("Campo vazio!");
         }
@@ -39,10 +35,9 @@
         vm.addItem = angular.copy(item);
         vm.addItem.index = index;
         vm.mostra = true;
-        
       }
-      vm.salvar = function(item){
 
+      vm.salvar = function(item){
         var itens = list.produtos.map(function(el, i){
           debugger;
           if (i === item.index) {
@@ -51,7 +46,6 @@
           }
           return el;
         });
-        
         list.produtos = itens;
         list.save();
         vm.itens = list.produtos;
@@ -64,6 +58,7 @@
         vm.numero - vm.itens.length;
         list.save();
       }
+
       vm.selecionado = function(item){
         item.done = !item.done;
         list.save();
