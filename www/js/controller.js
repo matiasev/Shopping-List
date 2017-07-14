@@ -23,7 +23,7 @@
             }
           }
           vm.itens.push(item);
-          vm.numero - vm.itens.length;
+          vm.numero = vm.itens.length;
           list.save();
           delete vm.addItem;
         }else{
@@ -55,7 +55,7 @@
 
       vm.removeItem = function(item){
         vm.itens.splice(item, 1);
-        vm.numero - vm.itens.length;
+        vm.numero = vm.itens.length;
         list.save();
       }
 
