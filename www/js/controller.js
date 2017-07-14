@@ -3,42 +3,70 @@
 
   angular
     .module('starter')
-    .controller('myController', ['$scope', myController]);
+    .controller('myController', [ myController]);
 
-    function myController($scope){
+    function myController(){
       var vm = this;
-      var tasks = new getTasks();
+      var list = new getList();
 
-      vm.itens = tasks.produtos;
-      tasks.save();
+      vm.itens = list.produtos;
       vm.numero = vm.itens.length;
 
-      vm.adicionarItem = function(addItem){
-        if(addItem != null){
+      vm.adicionarItem = function(item){
+        
+        if(item != null){
+
           for (var i = 0; i < vm.itens.length; i++) {
-            var element = vm.itens[i];
-            if(addItem.nome == element.nome){
+            var el = vm.itens[i];
+            if(item.nome == el.nome){
               alert("Item já adicionado!");
               delete vm.addItem;
               return;
             }
           }
-          vm.itens.push(addItem);
+
+          vm.itens.push(item);
           vm.numero - vm.itens.length;
-          tasks.save();
+          list.save();
           delete vm.addItem;
+          
         }else{
           alert("Campo vazio!");
         }
       }
+
+      vm.editar = function(item, index){
+        vm.addItem = angular.copy(item);
+        vm.addItem.index = index;
+        vm.mostra = true;
+        
+      }
+      vm.salvar = function(item){
+
+        var itens = list.produtos.map(function(el, i){
+          debugger;
+          if (i === item.index) {
+            delete item.index;
+            return item;
+          }
+          return el;
+        });
+        
+        list.produtos = itens;
+        list.save();
+        vm.itens = list.produtos;
+        delete vm.addItem;
+        vm.mostra = false;
+      }
+
       vm.removeItem = function(item){
         vm.itens.splice(item, 1);
         vm.numero - vm.itens.length;
-        tasks.save();
+        list.save();
       }
       vm.selecionado = function(item){
         item.done = !item.done;
-        tasks.save();
+        list.save();
       }
     }
 }());
