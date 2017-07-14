@@ -11,7 +11,7 @@ body{
   position: inherit;
   float: right;
 }
-.ion-android-done{
+.ion-edit{
   font-size: 25px !important;
 }
 .ion-android-delete{
@@ -88,6 +88,17 @@ body{
 }
 .done-false{
   transition: 1s !important;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+}
+
+.mudar-true{
+   transition: 1s !important;
+  -moz-transition: 1s;
+  -webkit-transition: 1s;
+}
+.mudar-false{
+   transition: 1s !important;
   -moz-transition: 1s;
   -webkit-transition: 1s;
 }

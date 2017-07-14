@@ -1,11 +1,11 @@
-function getTasks() {
-  
+function getList() {
   this.produtos = [];
 
- var lista = localStorage.getItem("Shopping list");
+  var lista = localStorage.getItem("Shopping list");
 
- if (lista !== null)
-  this.produtos = angular.fromJson(lista);
+  if (lista !== null){
+    this.produtos = angular.fromJson(lista);
+  }
 
   this.save = function() {
     var lista = angular.toJson(this.produtos)
