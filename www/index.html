@@ -7,7 +7,8 @@
     
     <link href="css/main.css" rel="stylesheet">
     <link href="css/materialize.min.css" rel="stylesheet">
-    <link href="lib/ionicons/css/ionicons.css" rel="stylesheet">
+    <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     
   </head>
   <body>  
@@ -15,7 +16,7 @@
     <nav>
       <div class="nav-wrapper blue-grey darken-3">
         <a href="" class="brand-logo white-text ">Shopping List</a>
-        <a><i class="ion-ios-cart"></i></a>
+        <a><i class="ion-android-cart"></i></a>
         <input value="{{vm.numero}}" disabled>
       </div>
     </nav>
@@ -25,14 +26,17 @@
           <td>{{ $index + 1 }}</td>
           <td ng-click="vm.selecionado(item)">{{item.nome | uppercase}}</td>
           <!--<td><i class="material-icons" ng-show="item.done">done</i></td>-->
-          <td><i class="ion-android-done" ng-hide="item.done"></i><i class="ion-android-delete" ng-hide="!item.done" ng-click="vm.removeItem($index)"></i></td>
+          <td><i class="ion-edit" ng-hide="item.done" ng-click="vm.editar(item, $index)"></i><i class="ion-android-delete" ng-hide="!item.done" ng-click="vm.removeItem($index)"></i></td>
         </tr>
       </tbody>
     </table>
     
     <div class="container">
       <input name="nome" type="text" placeholder="Item" ng-model="vm.addItem.nome" maxlength="17" required>
-      <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-click="vm.adicionarItem(vm.addItem)">Add <i class="ion-plus"></i></a>
+      <a class="waves-effect waves-light btn-large blue-grey darken-3" ng-hide="vm.mostra" ng-click="vm.adicionarItem(vm.addItem)">Add <i class="ion-plus"></i></a>
+
+      
+      <a class="waves-effect waves-light btn-large blue-grey darken-4 " ng-hide="!vm.mostra" ng-click="vm.salvar(vm.addItem)" >Salvar</a>
     </div>
     <div ng-include="'footer.html'"></div>
   </div>
