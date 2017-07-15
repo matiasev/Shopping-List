@@ -6,16 +6,16 @@
     .controller('myController', [ myController]);
 
     function myController(){
-      var vm = this;
-      var list = new getList();
+      let vm = this;
+      let list = new getList();
 
       vm.itens = list.produtos;
       vm.numero = vm.itens.length;
 
       vm.adicionarItem = function(item){
         if(item != null){
-          for (var i = 0; i < vm.itens.length; i++) {
-            var el = vm.itens[i];
+          for (let i = 0; i < vm.itens.length; i++) {
+            let el = vm.itens[i];
             if(item.nome == el.nome){
               alert("Item já adicionado!");
               delete vm.addItem;
@@ -26,6 +26,7 @@
           vm.numero = vm.itens.length;
           list.save();
           delete vm.addItem;
+          
         }else{
           alert("Campo vazio!");
         }
@@ -38,7 +39,7 @@
       }
 
       vm.salvar = function(item){
-        var itens = list.produtos.map(function(el, i){
+        let itens = list.produtos.map(function(el, i){
           debugger;
           if (i === item.index) {
             delete item.index;
