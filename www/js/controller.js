@@ -55,9 +55,11 @@
       }
 
       vm.removeItem = function(item){
-        vm.itens.splice(item, 1);
-        vm.numero = vm.itens.length;
-        list.save();
+        if (confirm('Deseja remover este item?')) {
+          vm.itens.splice(item, 1);
+          vm.numero = vm.itens.length;
+          list.save();
+        }
       }
 
       vm.selecionado = function(item){
